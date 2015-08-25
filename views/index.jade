@@ -1,0 +1,106 @@
+//
+   Created by Kaan on 06/08/15.
+extends layout
+
+block content
+    div#site-header-container
+        ul
+            li
+                a(href='#Boogle') Boogle
+            li
+                a(href='#ClipUniverse') ClipUniverse
+            li
+                a(href='#eTeam') eTeam
+            li
+                a(href='#EOS') EOS
+            li
+                a(href='#InBetween') InBetween
+            li
+                a(href='#MAM') MAM
+            li
+                a(href='#Mantra') Mantra
+            li
+                a(href='#PDP') PDP
+            li
+                a(href='#PICenter') PICenter
+            li
+                a(href='#TMS') TMS
+            li#itemAddButton(style='cursor: pointer; float: right; margin-right: 30px; margin-top: 1px;')
+                // Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)
+                svg#Capa_1(version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', width='18px', height='18px', viewbox='0 0 844.801 844.801', style='enable-background:new 0 0 844.801 844.801;', xml:space='preserve')
+                    g
+                        path(d='M30,532.4h282.4v282.4c0,16.6,13.4,30,30,30h160c16.6,0,30-13.4,30-30V532.4h282.4c16.6,0,30-13.4,30-30v-160\
+              c0-16.6-13.4-30-30-30H532.4V30c0-16.6-13.4-30-30-30h-160c-16.6,0-30,13.4-30,30v282.4H30c-16.6,0-30,13.4-30,30v160\
+              C0,519,13.4,532.4,30,532.4z')
+            li#itemCloseButton(style='cursor: pointer; float: right; margin-right: 30px;')
+                svg(version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                width="20px" height="19px" viewBox="0 0 579.359 579.358" style="enable-background:new 0 0 579.359 579.358;"
+                xml:space="preserve")
+                    g
+                        path(d="M434.518,238.169v-93.33C434.518,64.994,369.56,0,289.679,0C209.816,0,144.84,64.994,144.84,144.839v93.33h72.421v-93.33c-0.003-39.96,32.476-72.421,72.418-72.421c39.924,0,72.421,32.463,72.421,72.421v93.33H434.518z")
+                        path(d="M72.419,325.887v181.051c0,39.994,32.427,72.421,72.421,72.421h289.681c39.991,0,72.418-32.427,72.418-72.421V325.887c0-39.994-32.427-72.421-72.421-72.421H144.84C104.846,253.469,72.419,285.893,72.419,325.887z M289.679,362.09c19.997,0,36.209,16.196,36.209,36.209c0,13.259-7.479,24.364-18.106,30.658v59.866c0,10.009-8.097,18.105-18.105,18.105c-10.009,0-18.106-8.097-18.106-18.105v-59.866c-10.627-6.294-18.106-17.399-18.106-30.658C253.47,378.292,269.682,362.099,289.679,362.099z")
+    div#fullpage
+        div.section
+            div#embed1.timeline
+        div.section
+            div#embed2.timeline
+        div.section
+            div#embed3.timeline
+        div.section
+            div#embed4.timeline
+        div.section
+            div#embed5.timeline
+        div.section
+            div#embed6.timeline
+        div.section
+            div#embed7.timeline
+        div.section
+            div#embed8.timeline
+        div.section
+            div#embed9.timeline
+        div.section
+            div#embed10.timeline
+    div#loadingBackground
+        div#addItemDialog
+            form#addItemForm(enctype="multipart/form-data")
+                h3 New Item
+                input.datepickers(type="text", placeholder='Begin Date dd/mm/yyyy' name="bDate" required)
+                input.datepickers(type='text', placeholder='End Date dd/mm/yyyy' name="eDate" required)
+                input(type='text', placeholder='Title' name="title" required)
+                textarea(placeholder='Description' name="description" required)
+                input(type='text', placeholder='JIRA ID' name="jiraId" required)
+                select(name="timelineName" required)
+                    option(value='Boogle') Boogle
+                    option(value='ClipUniverse') ClipUniverse
+                    option(value='eTeam') eTeam
+                    option(value='EOS') EOS
+                    option(value='InBetween') InBetween
+                    option(value='MAM') MAM
+                    option(value='Mantra') Mantra
+                    option(value='PDP') PDP
+                    option(value='PICenter') PICenter
+                    option(value='TMS') TMS
+                textarea.tags( placeholder="Type Team Members" name="teamMembers")
+                label.fileInput-label Browse
+                    input(type="file" name="photo" accept=".jpg,.png")
+                input(type='submit', value='Submit')
+        div#editItemDialog
+            form#editItemForm(action="/EditItem" method="POST" enctype="multipart/form-data")
+                h3 Edit Item
+                input.datepickers(type="text", placeholder='Begin Date dd/mm/yyyy' name="bDate" )
+                input.datepickers(type='text', placeholder='End Date dd/mm/yyyy' name="eDate" )
+                input(type='text', placeholder='Title' name="title" )
+                textarea(placeholder='Description' name="description" )
+                input(type='text', placeholder='JIRA ID' name="jiraId" )
+                input(style='display: none;' type='text' name="postId")
+                input(style='display: none;' type='text' name="postTimeline")
+                textarea.tags( placeholder="Type Team Members" name="teamMembers")
+                label.fileInput-label Change Picture
+                    input#editPicture(type="file" name="photoEdit" accept=".jpg,.png")
+                input(type='submit' value='Submit')
+                input#deletePostButton(type='button', value='DELETE')
+
+    div#dialog-confirm(title="Remove item?")
+        p   Well well well removing an item... Are you sure?
+
+

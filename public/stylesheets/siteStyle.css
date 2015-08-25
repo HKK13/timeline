@@ -1,0 +1,284 @@
+@font-face {
+    font-family: Aller;
+    src: url("../fonts/Aller_Rg.ttf");
+}
+
+body, .section {
+    min-width: 980px;
+    min-height: 700px;
+}
+
+#site-header-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 55px;
+    z-index: 1000;
+    padding: 0px;
+    margin: 0px;
+    background: rgba(223, 0, 36, 0.7);
+    min-width: 800px;
+}
+
+#site-header-container ul li a {
+    color: #ffffff;
+    font-size: 16px;
+    text-decoration: none;
+    font-family: Aller;
+    margin: 10px;
+}
+
+#site-header-container ul li a:hover {
+    text-decoration: underline;
+}
+
+#site-header-container ul li {
+    list-style: none;
+    display: inline-block;
+}
+
+#addItemDialog {
+    display: none;
+    margin-top: 0px;
+    margin-right: 40px;
+    float: right;
+    z-index: 10000;
+    width: 0;
+    height: 30px;
+}
+
+#editItemDialog {
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    z-index: 10000;
+    width: 294px;
+    height: 400px;
+    opacity: 0;
+}
+
+#addItemDialog form, #editItemDialog form {
+    display: none;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 5px;
+    padding: 10px;
+    font-family: Aller;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+#addItemDialog form input[type=date], #addItemDialog form input[type=text], textarea,
+#addItemDialog form input[type=submit], #editItemDialog form input {
+    font-family: Aller;
+    text-align: center;
+    width: 250px;
+    max-width: 250px;
+    min-width: 250px;
+    min-height: 25px;
+    overflow-x: auto;
+    height: 25px;
+    font-size: 16px;
+    border: 1px solid rgba(199, 207, 220, 1);
+    border-radius: 2px;
+    margin: 10px;
+    background: transparent;
+    color: #000000;
+}
+
+/*////////*/
+
+form input[type="file"] {
+    display: none;
+}
+
+.fileInput-label {
+    display: inline-block;
+    height: 18px;
+    width: 243px;
+    margin: 10px;
+    padding: 4px;
+    cursor: pointer;
+    background: transparent;
+    font-size: 16px;
+    border: 1px solid rgba(199, 207, 220, 1);
+    border-radius: 2px;
+    color: #000000;
+    text-align: center;
+}
+
+.fileInput-label:hover {
+    background: rgba(135, 206, 250, 0.6);
+}
+
+.fileInput-div label {
+    color: white;
+    font-size: 16px;
+    margin: auto;
+}
+
+.fileInput {
+    display: none;
+}
+
+/*/////////*/
+
+#addItemDialog form input[type=submit]:hover, #editItemDialog form input[type=submit]:hover, #editItemDialog form input[type=button]:hover {
+    background-color: rgba(221, 221, 221, 0.8);
+    cursor: pointer;
+}
+
+#addItemDialog form input[type=submit], #editItemDialog form input[type=submit], #editItemDialog form input[type=button] {
+    max-width: 254px;
+    width: 254px;
+    height: 29px;
+    border: 2px solid rgba(117, 217, 120, 1);
+}
+
+#editItemDialog form input[type=button] {
+    border: 2px solid rgba(223, 0, 36, 0.7);
+    color: rgba(223, 0, 36, 0.7);
+}
+
+#addItemDialog form select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: transparent url('../images/arrow486.png') no-repeat;
+    background-position: 95% center;
+    width: 254px;
+    text-align: center;
+    height: 29px;
+    font-size: 16px;
+    font-family: Aller;
+    border: 1px solid rgba(199, 207, 220, 1);
+    border-radius: 2px;
+    margin: 10px;
+    color: #000000;
+}
+
+#itemAddButton img {
+    width: 16px;
+}
+
+#itemAddButton svg,#itemCloseButton svg {
+    fill: #ffffff !important;
+    color: #ffffff;
+}
+
+#itemAddButton svg:hover , #itemCloseButton svg:hover{
+    fill: #000000 !important;
+    color: #000000;
+}
+
+#addItemDialog h3, #editItemDialog h3 {
+    margin: 12px;
+}
+
+#loadingBackground {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(112, 112, 112, 0.6);
+    z-index: 1001;
+}
+
+.statusBarText {
+    font-weight: bold;
+}
+
+.editButton, #deletePostButton {
+    width: 80px;
+    min-height: 22px;
+    border: 1px solid rgba(223, 0, 36, 0.7);
+    border-radius: 2px;
+    background-color: transparent;
+    font-size: 12px;
+    color: rgba(223, 0, 36, 0.7);
+    margin-top: 3px;
+    cursor: pointer;
+}
+
+.editButton:hover {
+    background-color: rgba(221, 221, 221, 0.6);
+}
+
+.timeline {
+    height: 70%;
+    margin: auto;
+}
+
+#embed1, #embed2, #embed3, #embed4, #embed5, #embed6, #embed7, #embed8, #embed9, #embed10 {
+    position: absolute;
+    top: 11%;
+    height: 85%;
+}
+
+.vco-timemarker.vco-timemarker-active .vco-timemarker-timespan {
+    background-color: transparent;
+    z-index: 8;
+}
+
+.vco-timemarker.vco-timemarker-active .vco-timemarker-content-container {
+    background-color: rgba(117, 217, 120, 1);
+    color: #ffffff;
+}
+
+.vco-timemaker-content .vco-timemaker-text {
+    color: #ffffff;
+}
+
+.vco-timemarker.vco-timemarker-active .vco-timemarker-content-container .vco-timemarker-content .vco-timemarker-text h2.vco-headline {
+    color: #000000;
+}
+
+.vco-timenav {
+    background-color: rgba(93, 114, 152, 1);
+}
+
+.vco-timemarker .vco-timemarker-content-container .vco-timemarker-content .vco-timemarker-text h2.vco-headline.vco-headline-fadeout::after {
+    background: none;
+}
+
+.vco-timemarker.vco-timemarker-active .vco-timemarker-content-container .vco-timemarker-content .vco-timemarker-text h2.vco-headline.vco-headline-fadeout::after {
+    background: transparent;
+}
+
+.vco-timemarker.vco-timemarker-active .vco-timemarker-content-container .vco-timemarker-content .vco-timemarker-text h2.vco-headline.vco-headline-fadeout:hover {
+    background: none;
+}
+
+.vco-timemarker .vco-timemarker-content-container .vco-timemarker-content .vco-timemarker-text h2.vco-headline {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.vco-timemarker .vco-timemarker-content-container {
+    background-color: rgba(224, 245, 204, 1);
+}
+
+.vco-timemarker .vco-timemarker-timespan {
+    background-color: transparent;
+}
+
+.vco-timemarker .vco-timemarker-line-left {
+    border: 1px solid #ffffff;
+}
+
+.vco-media .vco-media-content-container .vco-media-content img {
+    max-width: 45%;
+    margin: auto;
+    margin-top: 10%;
+}
+
+.vco-media .vco-media-content-container .vco-media-content {
+    margin-bottom: 5%;
+}
+
+.ui-front {
+    z-index: 1001;
+}
