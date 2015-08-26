@@ -273,7 +273,7 @@ function requestContent(anchor, current) {
             timelines[current - 1] = timeline;
             timeline.goToId("-1");
             timeline.on('change', function (object) {
-                timelineSlideID = object.uniqueid;
+                timelineSlideID = object.unique_id;
             });
             window.onresize = function (event) {
                 timelines[current - 1].updateDisplay();
@@ -286,8 +286,9 @@ function requestContent(anchor, current) {
                 $('#editItemForm').fadeIn(1000);
                 var inputs = document.getElementById('editItemForm').getElementsByTagName("input");
                 var obj = timelines[current - 1].getDataById(timelineSlideID);
-                var docId = obj.text.docId;
-                var date = obj.start_date.data;
+                var object = obj;
+                var docId = object.text.docId;
+                var date = object.start_date.data;
                 inputs[0].value = date.day + "/" + date.month + "/" + date.year;
                 date = obj.end_date.data;
                 inputs[1].value = date.day + "/" + date.month + "/" + date.year;
