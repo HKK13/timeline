@@ -198,7 +198,7 @@ var getTimeNow = function (jsonObj) { //Adds today slider.
     eventTemplate.start_date.year = "" + timer.getFullYear() + "";
     eventTemplate.text.headline = "Today";
     eventTemplate.text.text = "<p>You are here.</p>";
-    eventTemplate.uniqueid = "-1";
+    eventTemplate.unique_id = "-1";
     jsonObj.events.push(eventTemplate); //Does not write object into file. Will be added to list before sending whole event list every time.
     return jsonObj;
 };
