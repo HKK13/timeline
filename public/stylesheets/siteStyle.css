@@ -8,6 +8,15 @@ body, .section {
     min-height: 700px;
 }
 
+/*********** IE Insults ***********/
+#browser-div a img{
+    margin: 14px;
+}
+#sad-ie{
+    margin-top: 10%;
+}
+/*********** ENDS HERE ************/
+
 #site-header-container {
     position: fixed;
     top: 0;
@@ -37,6 +46,56 @@ body, .section {
     list-style: none;
     display: inline-block;
 }
+
+/* HOOP*/
+#site-header-container ul ul{
+    margin: 0;
+    padding: 0;
+    background:#fff;
+    background:rgba(0,0,0,0);
+    list-style:none;
+    position:absolute;
+    right:-9999px;
+    width: 30px;
+    text-align: center;
+}
+
+#site-header-container ul ul li{
+    padding-top:1px;
+    float:none;
+    margin-top: 10px;
+}
+
+#site-header-container ul ul div li svg{
+    fill: rgba(223, 0, 36, 0.7); !important;
+    color: rgba(223, 0, 36, 0.7);;
+}
+
+#site-header-container ul ul a{
+    white-space:nowrap;
+}
+
+#site-header-container ul li:hover ul {
+    margin-top: -8px;
+    padding-top: 20px;
+    right:36px;
+}
+
+#listIcon a svg{
+    fill: #ffffff !important;
+    color: #ffffff;
+}
+
+#site-header-container ul li ul li svg:hover , #site-header-container ul li ul li svg:hover{
+    fill: black !important;
+    color: black;
+}
+
+#listIcon a svg:hover{
+    fill: #000000 !important;
+    color: #000000;
+}
+
 
 #addItemDialog {
     display: none;
@@ -163,16 +222,6 @@ form input[type="file"] {
     width: 16px;
 }
 
-#itemAddButton svg,#itemCloseButton svg {
-    fill: #ffffff !important;
-    color: #ffffff;
-}
-
-#itemAddButton svg:hover , #itemCloseButton svg:hover{
-    fill: #000000 !important;
-    color: #000000;
-}
-
 #addItemDialog h3, #editItemDialog h3 {
     margin: 12px;
 }
@@ -272,7 +321,6 @@ form input[type="file"] {
 .vco-media .vco-media-content-container .vco-media-content img {
     max-width: 45%;
     margin: auto;
-    margin-top: 10%;
 }
 
 .vco-media .vco-media-content-container .vco-media-content {

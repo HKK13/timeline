@@ -1,5 +1,12 @@
 doctype html
-html
+<!--[if lt IE 7]>
+html(lang="en" ng-app="manMainApp" class="no-js lt-ie9 lt-ie8 lt-ie7") <![endif]-->
+<!--[if IE 7]>
+html(lang="en" ng-app="manMainApp" class="no-js lt-ie9 lt-ie8") <![endif]-->
+<!--[if IE 8]>
+html(lang="en" ng-app="manMainApp" class="no-js lt-ie9") <![endif]-->
+<!--[if gt IE 8]><!-->
+html(lang="en" ng-app="manMainApp" class="no-js") <!--<![endif]-->
     head
         title= title
         link(rel='stylesheet', href='/fullPage/jquery.fullPage.css')
@@ -7,7 +14,26 @@ html
         link(rel='stylesheet', href='https://code.jquery.com/ui/1.11.4/themes/blitzer/jquery-ui.css')
         link(rel='stylesheet', href='/stylesheets/siteStyle.css')
     body
+        <!--[if lt IE 10]>
+        div#sad-ie(style="font-family: Aller; text-align: center;")
+            p Your browser is bad and you should feel bad!
+            p Here try these:
+            div#browser-div
+                a(target="_blank", href="https://www.google.com/chrome")
+                    img(src="images/chrome_64x64.png")
+                a(target="_blank", href="https://www.mozilla.org/firefox")
+                    img(src="images/firefox_64x64.png")
+                a(target="_blank", href="http://windows.microsoft.com/tr-tr/internet-explorer/download-ie")
+                    img(src="images/internet-explorer_64x64.png")
+                a(target="_blank", href="http://www.apple.com/safari/")
+                    img(src="images/safari_64x64.png")
+        <![endif]-->
+        <!--[if gte IE 10]>
         block content
+        <![endif]-->
+        <!--[if !IE]-->
+        block content
+        <![endif]-->
 
     script(src='https://code.jquery.com/jquery-2.1.4.min.js')
     script(type='text/javascript', src='/fullPage/jquery.fullPage.min.js')
