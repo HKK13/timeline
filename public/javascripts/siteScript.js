@@ -66,28 +66,6 @@ $(document).ready(function () {
                 timelines[currentSectionNum - 1].add(res);
                 timelines[currentSectionNum - 1].goToId(convertStringEng(res.text.headline.toLowerCase().replace(" ", "-")));
                 closePops();
-                $('.editButton').click(function () {
-                    $('#loadingBackground').fadeIn(800);
-                    $('#editItemDialog').show().animate({
-                        opacity: 1
-                    }, 500);
-                    $('#editItemForm').fadeIn(1000);
-                    var inputs = document.getElementById('editItemForm').getElementsByTagName("input");
-                    var obj = timelines[currentSectionNum - 1].getDataById(timelineSlideID);
-                    var docId = obj.text.docId;
-                    var date = obj.start_date.data;
-                    inputs[0].value = date.day + "/" + date.month + "/" + date.year;
-                    date = obj.end_date.data;
-                    inputs[1].value = date.day + "/" + date.month + "/" + date.year;
-                    inputs[2].value = obj.text.headline;
-                    inputs[3].value = obj.text.jiraId;
-                    inputs[4].value = docId;
-                    inputs[5].value = currentSection;
-                    var textareas = document.getElementById('editItemForm').getElementsByTagName("textarea");
-                    textareas[0].value = obj.text.description;
-                    textareas[1].value = obj.text.teamMembers.substr(6) + ", ";
-                    isEditOpen = true;
-                });
             },
             'error': function () {
                 isBusy = false;
@@ -171,34 +149,40 @@ $(document).ready(function () {
                 timelines[currentSectionNum - 1].add(res);
                 timelines[currentSectionNum - 1].goToId(convertStringEng(res.text.headline.toLowerCase().replace(" ", "-")));
                 closePops();
-                $('.editButton').click(function () {
-                    $('#loadingBackground').fadeIn(800);
-                    $('#editItemDialog').show().animate({
-                        opacity: 1
-                    }, 500);
-                    $('#editItemForm').fadeIn(1000);
-                    var inputs = document.getElementById('editItemForm').getElementsByTagName("input");
-                    var obj = timelines[currentSectionNum - 1].getDataById(timelineSlideID);
-                    var docId = obj.text.docId;
-                    var date = obj.start_date.data;
-                    inputs[0].value = date.day + "/" + date.month + "/" + date.year;
-                    date = obj.end_date.data;
-                    inputs[1].value = date.day + "/" + date.month + "/" + date.year;
-                    inputs[2].value = obj.text.headline;
-                    inputs[3].value = obj.text.jiraId;
-                    inputs[4].value = docId;
-                    inputs[5].value = currentSection;
-                    var textareas = document.getElementById('editItemForm').getElementsByTagName("textarea");
-                    textareas[0].value = obj.text.description;
-                    textareas[1].value = obj.text.teamMembers.substr(6) + ", ";
-                    isEditOpen = true;
-                });
             },
             'error': function () {
                 isBusy = false;
                 alert("Something went wrong :(");
             }
         });
+    });
+
+    $('#editButton').click(function () {
+        if(timelineSlideID != undefined && timelineSlideID != -1) {
+            $('#loadingBackground').fadeIn(800);
+            $('#editItemDialog').show().animate({
+                opacity: 1
+            }, 500);
+            $('#editItemForm').fadeIn(1000);
+            var inputs = document.getElementById('editItemForm').getElementsByTagName("input");
+            var obj = timelines[currentSectionNum - 1].getDataById(timelineSlideID);
+            if (obj != null && obj.text.docId != undefined && obj.text.docId != "-1") {
+                var object = obj;
+                var docId = object.text.docId;
+                var date = object.start_date.data;
+                inputs[0].value = date.day + "/" + date.month + "/" + date.year;
+                date = obj.end_date.data;
+                inputs[1].value = date.day + "/" + date.month + "/" + date.year;
+                inputs[2].value = obj.text.headline;
+                inputs[3].value = obj.text.jiraId;
+                inputs[4].value = docId;
+                inputs[5].value = currentSection;
+                var textareas = document.getElementById('editItemForm').getElementsByTagName("textarea");
+                textareas[0].value = obj.text.description;
+                textareas[1].value = obj.text.teamMembers.substr(6) + ", ";
+                isEditOpen = true;
+            }
+        }
     });
 
     $('#itemCloseButton').click(function (event) {
@@ -278,29 +262,6 @@ function requestContent(anchor, current) {
             window.onresize = function (event) {
                 timelines[current - 1].updateDisplay();
             };
-            $('.editButton').click(function () {
-                $('#loadingBackground').fadeIn(800);
-                $('#editItemDialog').show().animate({
-                    opacity: 1
-                }, 500);
-                $('#editItemForm').fadeIn(1000);
-                var inputs = document.getElementById('editItemForm').getElementsByTagName("input");
-                var obj = timelines[current - 1].getDataById(timelineSlideID);
-                var object = obj;
-                var docId = object.text.docId;
-                var date = object.start_date.data;
-                inputs[0].value = date.day + "/" + date.month + "/" + date.year;
-                date = obj.end_date.data;
-                inputs[1].value = date.day + "/" + date.month + "/" + date.year;
-                inputs[2].value = obj.text.headline;
-                inputs[3].value = obj.text.jiraId;
-                inputs[4].value = docId;
-                inputs[5].value = anchor;
-                var textareas = document.getElementById('editItemForm').getElementsByTagName("textarea");
-                textareas[0].value = obj.text.description;
-                textareas[1].value = obj.text.teamMembers.substr(6) + ", ";
-                isEditOpen = true;
-            });
         }
     });
 

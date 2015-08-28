@@ -63,10 +63,11 @@ router.get('/Boogle', function (req, res) {
             obj.events.forEach(function (item) {
                 status = checker.statusCheck(item.start_date, item.end_date, item.text.isClosed); //Check status of each event.
                 if (item.text.headline != "TODAY") {
-                    var text = "<p class='statusBarText'><a href='https://issuetracking.bsh-sdd.com/browse/" + item.text.jiraId + "' target='_blank'>JIRA ID: " + item.text.jiraId + "</a>  |  STATUS: " + status + "</p><p>" + item.text.description + "</p> <input style='display: none;' type='text' value='" + item.docId + "'><p class='teamMembers'>" + item.text.teamMembers + "</p></p><input class='editButton' type='button' value='Edit'>";
+                    var text = "<p class='statusBarText'><a href='https://issuetracking.bsh-sdd.com/browse/" + item.text.jiraId + "' target='_blank'>JIRA ID: " + item.text.jiraId + "</a>  |  STATUS: " + status + "</p><p>" + item.text.description + "</p> <input style='display: none;' type='text' value='" + item.docId + "'><p class='teamMembers'>" + item.text.teamMembers + "</p></p>";
                     item.text.text = text;
                 }
             });
+            console.log(JSON.stringify(obj));
             tlTool.getTimeNow(obj); //Add today slide.
             res.send(obj);
         } else {
