@@ -70,6 +70,7 @@ var createItem = function (bDate, eDate, title, description, jiraId, timeline, t
             eventTemplate.text.headline = title;
             eventTemplate.text.jiraId = jiraId;
             eventTemplate.text.description = description;
+            eventTemplate.text.createdOn = Date.now();
 
             var members = splitTeamMembers(teamMembers);
 
@@ -121,6 +122,7 @@ var editItem = function (bDate, eDate, title, description, jiraId, teamMembers, 
                 var team = splitTeamMembers(teamMembers);
                 singleEvent.text.teamMembers = team;
             }
+            singleEvent.text.latestUpdate = Date.now();
             //Write json into file.
             writeElement(pathP.join(__dir, timeline.toLowerCase(), timeline.toLowerCase() + ".json"), (obj), function (err) {
                 if (!err)

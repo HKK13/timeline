@@ -64,7 +64,7 @@ $(document).ready(function () {
             'success': function (res) {
                 isBusy = false;
                 timelines[currentSectionNum - 1].add(res);
-                timelines[currentSectionNum - 1].goToId(convertStringEng(res.text.headline.toLowerCase().replace(" ", "-")));
+                timelines[currentSectionNum - 1].goToId(convertStringEng(res.text.headline.toLowerCase().replaceAll(" ", "-")));
                 closePops();
             },
             'error': function () {
@@ -147,7 +147,7 @@ $(document).ready(function () {
                 isBusy = false;
                 timelines[currentSectionNum - 1].removeId(timelineSlideID);
                 timelines[currentSectionNum - 1].add(res);
-                timelines[currentSectionNum - 1].goToId(convertStringEng(res.text.headline.toLowerCase().replace(" ", "-")));
+                timelines[currentSectionNum - 1].goToId(convertStringEng(res.text.headline.toLowerCase().replaceAll(" ", "-")));
                 closePops();
             },
             'error': function () {
@@ -198,6 +198,12 @@ $(document).ready(function () {
                 alert("Something went wrong :(");
             }
         });
+    });
+
+
+    $('#excelIcon').click(function () {
+        var date = new Date();
+        window.location = "/GetXLSX/"+ date.getDate() + "_" + (date.getMonth()+1) + "_" + date.getFullYear() +"_roadmap.xlsx";
     });
 
     //Keyboard arrow key listener
@@ -268,7 +274,23 @@ function requestContent(anchor, current) {
     $(".datepickers").datepicker({
         changeMonth: true,
         changeYear: true,
-        dateFormat: "dd/mm/yy"
+        dateFormat: "dd/mm/yy",
+        showWeek: true,
+        firstDay: 1,
+        onSelect: function(dateText, inst) {
+            $(this).val(dateText);
+        }
+    });
+
+    $(".datepickers").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: "dd/mm/yy",
+        showWeek: true,
+        firstDay: 1,
+        onSelect: function(dateText, inst) {
+            $(this).val(dateText);
+        }
     });
 
     var availableTags = [];
@@ -358,3 +380,20 @@ function convertStringEng(returnString) {
     returnString = returnString.replace(/ü/g, 'u');
     return returnString
 }
+
+String.prototype.replaceAll = function(str1, str2, ignore) {
+    return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
+};
+
+Date.prototype.getWeek = function() {
+    var onejan = new Date(this.getFullYear(),0,1);
+    return Math.ceil((((this - onejan) / 86400000) + onejan.getDay()+1)/7) -1;
+};
+
+var usFormat = function (date) {
+    var dateArr = date.split("/");
+    var year = dateArr.pop(),
+        month = dateArr.pop(),
+        day = dateArr.pop();
+    return month+"/"+day+"/"+year;
+};
