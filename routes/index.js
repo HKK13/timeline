@@ -4,6 +4,7 @@ var router = express.Router(),
     fs = require('fs'),
     pathP = require('path'),
     checker = require('../public/javascripts/checker'),
+    excelTool = require('../public/javascripts/excelTool');
     multer = require('multer'),//Multer handles multipart/form data.
     storage = multer.diskStorage({
         destination: function (req, file, cb) { //Set destination for file upload.
@@ -27,7 +28,6 @@ router.get('/', function (req, res, next) {
 
 //upload.array('photo) is used for to get only parameters due to multipart/form data.
 router.post('/InsertItem', upload.single('photo'), function (req, res) {
-    console.log(req.body);
     if (checker.isDateBigger(req.body.bDate, req.body.eDate)) { //If dates are valid
         if (checker.dateCheck(req.body.bDate) && checker.dateCheck(req.body.eDate) && req.body.title && req.body.description && req.body.jiraId && req.body.timelineName && req.body.teamMembers) {
             var filename;
@@ -38,7 +38,7 @@ router.post('/InsertItem', upload.single('photo'), function (req, res) {
             tlTool.createItem(req.body.bDate, req.body.eDate, req.body.title, req.body.description, req.body.jiraId, req.body.timelineName, req.body.teamMembers, filename, function (err, event) {//Create event
                 if (!err) {
                     var status = checker.statusCheck(event.start_date, event.end_date, event.text.isClosed);
-                    var text = "<p class='statusBarText'><a href='https://issuetracking.bsh-sdd.com/browse/" + event.text.jiraId + "' target='_blank'>JIRA ID: " + event.text.jiraId + "</a>  |  STATUS: " + status + "</p><p>" + event.text.description + "</p> <input style='display: none;' type='text' value='" + event.docId + "'><p class='teamMembers'>" + event.text.teamMembers + "</p></p><input class='editButton' type='button' value='Edit'>";
+                    var text = "<p class='statusBarText'><a href='https://issuetracking.bsh-sdd.com/browse/" + event.text.jiraId + "' target='_blank'>JIRA ID: " + event.text.jiraId + "</a>  |  STATUS: " + status + "</p><p>" + event.text.description + "</p> <input style='display: none;' type='text' value='" + event.docId + "'><p class='teamMembers'>" + event.text.teamMembers + "</p></p>";
                     event.text.text = text;
                     res.send(event); //Send event back.
                 }
@@ -67,7 +67,6 @@ router.get('/Boogle', function (req, res) {
                     item.text.text = text;
                 }
             });
-            console.log(JSON.stringify(obj));
             tlTool.getTimeNow(obj); //Add today slide.
             res.send(obj);
         } else {
@@ -249,7 +248,6 @@ router.get('/TMS', function (req, res) {
 });
 
 router.post('/EditItem', upload.array(), function (req, res) {
-    console.log(req.body);
     if (checker.isDateBigger(req.body.bDate, req.body.eDate)) {
         tlTool.editItem(req.body.bDate, req.body.eDate, req.body.title, req.body.description, req.body.jiraId, req.body.teamMembers, req.body.postTimeline, req.body.postId, function (err, event) {
             if (!err) {
@@ -267,7 +265,6 @@ router.post('/EditItem', upload.array(), function (req, res) {
 });
 
 router.post('/ChangePicture', upload.single('photoEdit'), function (req, res) {
-    console.log(req.body);
     tlTool.changePicture(req.file.filename, req.body.postTimeline, req.body.postId, function (err, link, oldLink) {
         if (!err) {
             res.json({oldUrl: oldLink, newUrl: link}).send();
@@ -308,13 +305,24 @@ router.get('/CloseItem/:timeline/:postId', function (req, res) {
                     object.text.isClosed = true;
                 else if(object.text.isClosed != undefined && object.text.isClosed == true)
                     object.text.isClosed = false;
+                object.text.latestUpdate = Date.now();
                 tlTool.writeElement(filePath, data, function (err) { //Write into file.
                     if(!err)
                         res.send('/#' + req.params.timeline); //Send response.
-                })
+                });
             }
         });
     });
+});
+
+//Sends an Excel document that contains all timelines.
+router.get('/GetXLSX/:file', function (req, res) {
+    excelTool.createWorkBook(function (err, file) {
+        if(!err)
+            res.sendFile(file, file.split('/').pop());
+        else
+            res.status(500).send();
+    })
 });
 
 module.exports = router;
