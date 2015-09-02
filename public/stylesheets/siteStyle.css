@@ -1,6 +1,11 @@
 @font-face {
-    font-family: Aller;
-    src: url("../fonts/Aller_Rg.ttf");
+    font-family: 'arconregular';
+    src: url('/fonts/arcon-regular-webfont.eot');
+    src: url('/fonts/arcon-regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/arcon-regular-webfont.woff2') format('woff2'),
+    url('/fonts/arcon-regular-webfont.woff') format('woff'),
+    url('/fonts/arcon-regular-webfont.ttf') format('truetype'),
+    url('/fonts/arcon-regular-webfont.svg#arconregular') format('svg');
 }
 
 body, .section {
@@ -22,7 +27,7 @@ body, .section {
     top: 0;
     left: 0;
     right: 0;
-    height: 55px;
+    height: 57px;
     z-index: 1000;
     padding: 0px;
     margin: 0px;
@@ -32,9 +37,9 @@ body, .section {
 
 #site-header-container ul li a {
     color: #ffffff;
-    font-size: 16px;
+    font-size: 18px;
     text-decoration: none;
-    font-family: Aller;
+    font-family: arconregular;
     margin: 10px;
 }
 
@@ -123,7 +128,7 @@ body, .section {
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 5px;
     padding: 10px;
-    font-family: Aller;
+    font-family: arconregular;
     -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
@@ -131,7 +136,7 @@ body, .section {
 
 #addItemDialog form input[type=date], #addItemDialog form input[type=text], textarea,
 #addItemDialog form input[type=submit], #editItemDialog form input {
-    font-family: Aller;
+    font-family: arconregular;
     text-align: center;
     width: 250px;
     max-width: 250px;
@@ -211,7 +216,7 @@ form input[type="file"] {
     text-align: center;
     height: 29px;
     font-size: 16px;
-    font-family: Aller;
+    font-family: arconregular;
     border: 1px solid rgba(199, 207, 220, 1);
     border-radius: 2px;
     margin: 10px;
