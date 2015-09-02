@@ -78,15 +78,15 @@ router.get('/Boogle', function (req, res) {
 router.get('/ClipUniverse', function (req, res) {
     fs.readFile(pathP.join(__dir, "clipuniverse/clipuniverse.json"), 'utf-8', function (err, data) {
         if (!err) {
-            var obj = JSON.parse(data);
+            var obj = JSON.parse(data); //Parse string into json.
             obj.events.forEach(function (item) {
-                status = checker.statusCheck(item.start_date, item.end_date, item.text.isClosed);
+                status = checker.statusCheck(item.start_date, item.end_date, item.text.isClosed); //Check status of each event.
                 if (item.text.headline != "TODAY") {
-                    var text = "<p class='statusBarText'><a href='https://issuetracking.bsh-sdd.com/browse/" + item.text.jiraId + "' target='_blank'>JIRA ID: " + item.text.jiraId + "</a>  |  STATUS: " + status + "</p><p>" + item.text.description + "</p> <input style='display: none;' type='text' value='" + item.docId + "'><p class='teamMembers'>" + item.text.teamMembers + "</p></p><input class='editButton' type='button' value='Edit'>";
+                    var text = "<p class='statusBarText'><a href='https://issuetracking.bsh-sdd.com/browse/" + item.text.jiraId + "' target='_blank'>JIRA ID: " + item.text.jiraId + "</a>  |  STATUS: " + status + "</p><p>" + item.text.description + "</p> <input style='display: none;' type='text' value='" + item.docId + "'><p class='teamMembers'>" + item.text.teamMembers + "</p></p>";
                     item.text.text = text;
                 }
             });
-            tlTool.getTimeNow(obj);
+            tlTool.getTimeNow(obj); //Add today slide.
             res.send(obj);
         } else {
             res.status(400).send();
@@ -97,16 +97,15 @@ router.get('/ClipUniverse', function (req, res) {
 router.get('/eTeam', function (req, res) {
     fs.readFile(pathP.join(__dir, "eteam/eteam.json"), 'utf-8', function (err, data) {
         if (!err) {
-            var obj = JSON.parse(data);
+            var obj = JSON.parse(data); //Parse string into json.
             obj.events.forEach(function (item) {
-
-                status = checker.statusCheck(item.start_date, item.end_date, item.text.isClosed);
+                status = checker.statusCheck(item.start_date, item.end_date, item.text.isClosed); //Check status of each event.
                 if (item.text.headline != "TODAY") {
-                    var text = "<p class='statusBarText'><a href='https://issuetracking.bsh-sdd.com/browse/" + item.text.jiraId + "' target='_blank'>JIRA ID: " + item.text.jiraId + "</a>  |  STATUS: " + status + "</p><p>" + item.text.description + "</p> <input style='display: none;' type='text' value='" + item.docId + "'><p class='teamMembers'>" + item.text.teamMembers + "</p></p><input class='editButton' type='button' value='Edit'>";
+                    var text = "<p class='statusBarText'><a href='https://issuetracking.bsh-sdd.com/browse/" + item.text.jiraId + "' target='_blank'>JIRA ID: " + item.text.jiraId + "</a>  |  STATUS: " + status + "</p><p>" + item.text.description + "</p> <input style='display: none;' type='text' value='" + item.docId + "'><p class='teamMembers'>" + item.text.teamMembers + "</p></p>";
                     item.text.text = text;
                 }
             });
-            tlTool.getTimeNow(obj);
+            tlTool.getTimeNow(obj); //Add today slide.
             res.send(obj);
         } else {
             res.status(400).send();
@@ -117,15 +116,15 @@ router.get('/eTeam', function (req, res) {
 router.get('/EOS', function (req, res) {
     fs.readFile(pathP.join(__dir, "eos/eos.json"), 'utf-8', function (err, data) {
         if (!err) {
-            var obj = JSON.parse(data);
+            var obj = JSON.parse(data); //Parse string into json.
             obj.events.forEach(function (item) {
-                status = checker.statusCheck(item.start_date, item.end_date, item.text.isClosed);
+                status = checker.statusCheck(item.start_date, item.end_date, item.text.isClosed); //Check status of each event.
                 if (item.text.headline != "TODAY") {
-                    var text = "<p class='statusBarText'><a href='https://issuetracking.bsh-sdd.com/browse/" + item.text.jiraId + "' target='_blank'>JIRA ID: " + item.text.jiraId + "</a>  |  STATUS: " + status + "</p><p>" + item.text.description + "</p> <input style='display: none;' type='text' value='" + item.docId + "'><p class='teamMembers'>" + item.text.teamMembers + "</p></p><input class='editButton' type='button' value='Edit'>";
+                    var text = "<p class='statusBarText'><a href='https://issuetracking.bsh-sdd.com/browse/" + item.text.jiraId + "' target='_blank'>JIRA ID: " + item.text.jiraId + "</a>  |  STATUS: " + status + "</p><p>" + item.text.description + "</p> <input style='display: none;' type='text' value='" + item.docId + "'><p class='teamMembers'>" + item.text.teamMembers + "</p></p>";
                     item.text.text = text;
                 }
             });
-            tlTool.getTimeNow(obj);
+            tlTool.getTimeNow(obj); //Add today slide.
             res.send(obj);
         } else {
             res.status(400).send();
@@ -136,15 +135,15 @@ router.get('/EOS', function (req, res) {
 router.get('/InBetween', function (req, res) {
     fs.readFile(pathP.join(__dir, "inbetween/inbetween.json"), 'utf-8', function (err, data) {
         if (!err) {
-            var obj = JSON.parse(data);
+            var obj = JSON.parse(data); //Parse string into json.
             obj.events.forEach(function (item) {
-                status = checker.statusCheck(item.start_date, item.end_date, item.text.isClosed);
+                status = checker.statusCheck(item.start_date, item.end_date, item.text.isClosed); //Check status of each event.
                 if (item.text.headline != "TODAY") {
-                    var text = "<p class='statusBarText'><a href='https://issuetracking.bsh-sdd.com/browse/" + item.text.jiraId + "' target='_blank'>JIRA ID: " + item.text.jiraId + "</a>  |  STATUS: " + status + "</p><p>" + item.text.description + "</p> <input style='display: none;' type='text' value='" + item.docId + "'><p class='teamMembers'>" + item.text.teamMembers + "</p></p><input class='editButton' type='button' value='Edit'>";
+                    var text = "<p class='statusBarText'><a href='https://issuetracking.bsh-sdd.com/browse/" + item.text.jiraId + "' target='_blank'>JIRA ID: " + item.text.jiraId + "</a>  |  STATUS: " + status + "</p><p>" + item.text.description + "</p> <input style='display: none;' type='text' value='" + item.docId + "'><p class='teamMembers'>" + item.text.teamMembers + "</p></p>";
                     item.text.text = text;
                 }
             });
-            tlTool.getTimeNow(obj);
+            tlTool.getTimeNow(obj); //Add today slide.
             res.send(obj);
         } else {
             res.status(400).send();
@@ -155,15 +154,15 @@ router.get('/InBetween', function (req, res) {
 router.get('/MAM', function (req, res) {
     fs.readFile(pathP.join(__dir, "mam/mam.json"), 'utf-8', function (err, data) {
         if (!err) {
-            var obj = JSON.parse(data);
+            var obj = JSON.parse(data); //Parse string into json.
             obj.events.forEach(function (item) {
-                status = checker.statusCheck(item.start_date, item.end_date, item.text.isClosed);
+                status = checker.statusCheck(item.start_date, item.end_date, item.text.isClosed); //Check status of each event.
                 if (item.text.headline != "TODAY") {
-                    var text = "<p class='statusBarText'><a href='https://issuetracking.bsh-sdd.com/browse/" + item.text.jiraId + "' target='_blank'>JIRA ID: " + item.text.jiraId + "</a>  |  STATUS: " + status + "</p><p>" + item.text.description + "</p> <input style='display: none;' type='text' value='" + item.docId + "'><p class='teamMembers'>" + item.text.teamMembers + "</p></p><input class='editButton' type='button' value='Edit'>";
+                    var text = "<p class='statusBarText'><a href='https://issuetracking.bsh-sdd.com/browse/" + item.text.jiraId + "' target='_blank'>JIRA ID: " + item.text.jiraId + "</a>  |  STATUS: " + status + "</p><p>" + item.text.description + "</p> <input style='display: none;' type='text' value='" + item.docId + "'><p class='teamMembers'>" + item.text.teamMembers + "</p></p>";
                     item.text.text = text;
                 }
             });
-            tlTool.getTimeNow(obj);
+            tlTool.getTimeNow(obj); //Add today slide.
             res.send(obj);
         } else {
             res.status(400).send();
@@ -174,15 +173,15 @@ router.get('/MAM', function (req, res) {
 router.get('/Mantra', function (req, res) {
     fs.readFile(pathP.join(__dir, "mantra/mantra.json"), 'utf-8', function (err, data) {
         if (!err) {
-            var obj = JSON.parse(data);
+            var obj = JSON.parse(data); //Parse string into json.
             obj.events.forEach(function (item) {
-                status = checker.statusCheck(item.start_date, item.end_date, item.text.isClosed);
+                status = checker.statusCheck(item.start_date, item.end_date, item.text.isClosed); //Check status of each event.
                 if (item.text.headline != "TODAY") {
-                    var text = "<p class='statusBarText'><a href='https://issuetracking.bsh-sdd.com/browse/" + item.text.jiraId + "' target='_blank'>JIRA ID: " + item.text.jiraId + "</a>  |  STATUS: " + status + "</p><p>" + item.text.description + "</p> <input style='display: none;' type='text' value='" + item.docId + "'><p class='teamMembers'>" + item.text.teamMembers + "</p></p><input class='editButton' type='button' value='Edit'>";
+                    var text = "<p class='statusBarText'><a href='https://issuetracking.bsh-sdd.com/browse/" + item.text.jiraId + "' target='_blank'>JIRA ID: " + item.text.jiraId + "</a>  |  STATUS: " + status + "</p><p>" + item.text.description + "</p> <input style='display: none;' type='text' value='" + item.docId + "'><p class='teamMembers'>" + item.text.teamMembers + "</p></p>";
                     item.text.text = text;
                 }
             });
-            tlTool.getTimeNow(obj);
+            tlTool.getTimeNow(obj); //Add today slide.
             res.send(obj);
         } else {
             res.status(400).send();
@@ -193,15 +192,15 @@ router.get('/Mantra', function (req, res) {
 router.get('/PDP', function (req, res) {
     fs.readFile(pathP.join(__dir, "pdp/pdp.json"), 'utf-8', function (err, data) {
         if (!err) {
-            var obj = JSON.parse(data);
+            var obj = JSON.parse(data); //Parse string into json.
             obj.events.forEach(function (item) {
-                status = checker.statusCheck(item.start_date, item.end_date, item.text.isClosed);
+                status = checker.statusCheck(item.start_date, item.end_date, item.text.isClosed); //Check status of each event.
                 if (item.text.headline != "TODAY") {
-                    var text = "<p class='statusBarText'><a href='https://issuetracking.bsh-sdd.com/browse/" + item.text.jiraId + "' target='_blank'>JIRA ID: " + item.text.jiraId + "</a>  |  STATUS: " + status + "</p><p>" + item.text.description + "</p> <input style='display: none;' type='text' value='" + item.docId + "'><p class='teamMembers'>" + item.text.teamMembers + "</p></p><input class='editButton' type='button' value='Edit'>";
+                    var text = "<p class='statusBarText'><a href='https://issuetracking.bsh-sdd.com/browse/" + item.text.jiraId + "' target='_blank'>JIRA ID: " + item.text.jiraId + "</a>  |  STATUS: " + status + "</p><p>" + item.text.description + "</p> <input style='display: none;' type='text' value='" + item.docId + "'><p class='teamMembers'>" + item.text.teamMembers + "</p></p>";
                     item.text.text = text;
                 }
             });
-            tlTool.getTimeNow(obj);
+            tlTool.getTimeNow(obj); //Add today slide.
             res.send(obj);
         } else {
             res.status(400).send();
@@ -212,15 +211,15 @@ router.get('/PDP', function (req, res) {
 router.get('/PICenter', function (req, res) {
     fs.readFile(pathP.join(__dir, "picenter/picenter.json"), 'utf-8', function (err, data) {
         if (!err) {
-            var obj = JSON.parse(data);
+            var obj = JSON.parse(data); //Parse string into json.
             obj.events.forEach(function (item) {
-                status = checker.statusCheck(item.start_date, item.end_date, item.text.isClosed);
+                status = checker.statusCheck(item.start_date, item.end_date, item.text.isClosed); //Check status of each event.
                 if (item.text.headline != "TODAY") {
-                    var text = "<p class='statusBarText'><a href='https://issuetracking.bsh-sdd.com/browse/" + item.text.jiraId + "' target='_blank'>JIRA ID: " + item.text.jiraId + "</a>  |  STATUS: " + status + "</p><p>" + item.text.description + "</p> <input style='display: none;' type='text' value='" + item.docId + "'><p class='teamMembers'>" + item.text.teamMembers + "</p></p><input class='editButton' type='button' value='Edit'>";
+                    var text = "<p class='statusBarText'><a href='https://issuetracking.bsh-sdd.com/browse/" + item.text.jiraId + "' target='_blank'>JIRA ID: " + item.text.jiraId + "</a>  |  STATUS: " + status + "</p><p>" + item.text.description + "</p> <input style='display: none;' type='text' value='" + item.docId + "'><p class='teamMembers'>" + item.text.teamMembers + "</p></p>";
                     item.text.text = text;
                 }
             });
-            tlTool.getTimeNow(obj);
+            tlTool.getTimeNow(obj); //Add today slide.
             res.send(obj);
         } else {
             res.status(400).send();
@@ -231,15 +230,15 @@ router.get('/PICenter', function (req, res) {
 router.get('/TMS', function (req, res) {
     fs.readFile(pathP.join(__dir, "tms/tms.json"), 'utf-8', function (err, data) {
         if (!err) {
-            var obj = JSON.parse(data);
+            var obj = JSON.parse(data); //Parse string into json.
             obj.events.forEach(function (item) {
-                status = checker.statusCheck(item.start_date, item.end_date, item.text.isClosed);
+                status = checker.statusCheck(item.start_date, item.end_date, item.text.isClosed); //Check status of each event.
                 if (item.text.headline != "TODAY") {
-                    var text = "<p class='statusBarText'><a href='https://issuetracking.bsh-sdd.com/browse/" + item.text.jiraId + "' target='_blank'>JIRA ID: " + item.text.jiraId + "</a>  |  STATUS: " + status + "</p><p>" + item.text.description + "</p> <input style='display: none;' type='text' value='" + item.docId + "'><p class='teamMembers'>" + item.text.teamMembers + "</p></p><input class='editButton' type='button' value='Edit'>";
+                    var text = "<p class='statusBarText'><a href='https://issuetracking.bsh-sdd.com/browse/" + item.text.jiraId + "' target='_blank'>JIRA ID: " + item.text.jiraId + "</a>  |  STATUS: " + status + "</p><p>" + item.text.description + "</p> <input style='display: none;' type='text' value='" + item.docId + "'><p class='teamMembers'>" + item.text.teamMembers + "</p></p>";
                     item.text.text = text;
                 }
             });
-            tlTool.getTimeNow(obj);
+            tlTool.getTimeNow(obj); //Add today slide.
             res.send(obj);
         } else {
             res.status(400).send();
@@ -252,7 +251,7 @@ router.post('/EditItem', upload.array(), function (req, res) {
         tlTool.editItem(req.body.bDate, req.body.eDate, req.body.title, req.body.description, req.body.jiraId, req.body.teamMembers, req.body.postTimeline, req.body.postId, function (err, event) {
             if (!err) {
                 var status = checker.statusCheck(event.start_date, event.end_date, event.text.isClosed);
-                var text = "<p class='statusBarText'><a href='https://issuetracking.bsh-sdd.com/browse/" + event.text.jiraId + "' target='_blank'>JIRA ID: " + event.text.jiraId + "</a>  |  STATUS: " + status + "</p><p>" + event.text.description + "</p> <input style='display: none;' type='text' value='" + event.docId + "'><p class='teamMembers'>" + event.text.teamMembers + "</p></p><input class='editButton' type='button' value='Edit'>";
+                var text = "<p class='statusBarText'><a href='https://issuetracking.bsh-sdd.com/browse/" + event.text.jiraId + "' target='_blank'>JIRA ID: " + event.text.jiraId + "</a>  |  STATUS: " + status + "</p><p>" + event.text.description + "</p> <input style='display: none;' type='text' value='" + event.docId + "'><p class='teamMembers'>" + event.text.teamMembers + "</p></p>";
                 event.text.text = text;
                 res.send(event);
             }
